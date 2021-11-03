@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-import os
 import sys
 import cv2
 import pickle
@@ -9,7 +8,7 @@ import pickle
 image_path = r"D:\CS 230\CS230_FinalProject\allBaselineImages"
 
 def main(file, output_file):
-    path =r"D:\CS 230\CS230_FinalProject\Data CSV Files\BinarySplits" + "\\" + file
+    path =r"D:\CS 230\CS230_FinalProject\Data CSV Files\MultiSplits" + "\\" + file
     df = pd.read_csv(path, header=0)
     X = []
     Y = []
