@@ -4,29 +4,32 @@ from PIL import Image
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
-#path =r"C:\Users\const\Desktop\ADNI_Annual_2Yr_3T"
-Oasispath = r'C:\Users\const\Desktop\newOasisJPGS'
-ADNIpath = r'C:\Users\const\Desktop\adniBaseline'
-pathToSave = r'C:\Users\const\Desktop\allBaselineImages'
-minW = 10000
-minH = 10000
+
+rotatedFolder = r"C:\Users\const\Desktop\Data_Processing\ALL\rotated"
+pathToSave = r'C:\Users\const\Desktop\Data_Processing\ALL\allComplete'
+folderNames = ["1yr_1.5","1yr_3","2yr_1.5","2yr_3","3yr_1.5","3yr_3","base_2yr_3","base_3"]
+
 start = True
-for root, dirs, files in os.walk(Oasispath):
-    for file in files:
-        ending = file[-4:]
-        if ending == ".jpg":
-            if start:
-                #print(file)
-                #WANT: 160x208
-                fullName = os.path.join(root,file)
-                print(fullName)
+for i in folderNames:
+    folderPath = os.path.join(rotatedFolder,i)
+    print(folderPath)
+    for root, dirs, files in os.walk(folderPath):
+        for file in files:
+            ending = file[-4:]
+            if ending == ".jpg":
+                if start:
+                    #print(file)
+                    #WANT: 160x208
+                    fullName = os.path.join(root,file)
+                    #print(fullName)
 
-                im = Image.open(fullName)
-                print(im.size)
-                newIm = im.resize((160,208))
+                    im = Image.open(fullName)
+                    #print(im.size)
+                    newIm = im.resize((160,208))
 
-                newImPath = os.path.join(pathToSave,file)
-                newIm.save(newImPath)
+                    newImPath = os.path.join(pathToSave,file)
+                    #print(newImPath)
+                    newIm.save(newImPath)
                 #w,h = im.size
                 
                 #if w < minW:
@@ -39,27 +42,7 @@ for root, dirs, files in os.walk(Oasispath):
                 
 
             
-                
-            #print("---------")
-
-for root, dirs, files in os.walk(ADNIpath):
-    for file in files:
-        ending = file[-4:]
-        if ending == ".jpg":
-            if start:
-                #print(file)
-                #WANT: 160x208
-                fullName = os.path.join(root,file)
-                print(fullName)
-
-                im = Image.open(fullName)
-                print(im.size)
-                newIm = im.resize((160,208))
-
-                newImPath = os.path.join(pathToSave,file)
-                newIm.save(newImPath)
-#print("minw: ", minW)   
-#print("minh: ", minH)        
+ 
 
 
 
