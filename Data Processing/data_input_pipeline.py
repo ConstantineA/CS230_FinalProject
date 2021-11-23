@@ -5,10 +5,10 @@ import cv2
 import pickle
 
 
-image_path = r"D:\CS 230\CS230_FinalProject\allBaselineImages"
+image_path = r"D:\CS 230\CS230_FinalProject\ImageFiles"
 
 def main(file, output_file):
-    path =r"D:\CS 230\CS230_FinalProject\Data CSV Files\MultiSplits" + "\\" + file
+    path = r"D:\CS 230\CS230_FinalProject\Final CSV Files and Data\Binary Split\\" + file
     df = pd.read_csv(path, header=0)
     X = []
     Y = []
@@ -19,8 +19,9 @@ def main(file, output_file):
 
     X = np.array(X)
     Y = np.array(Y)
-    X_file = output_file + "X.p"
-    Y_file = output_file + "Y.p"
+    out_path = r"D:\CS 230\CS230_FinalProject\Final CSV Files and Data\Binary Split\\"
+    X_file = out_path + output_file + "X.p"
+    Y_file = out_path + output_file + "Y.p"
 
     pickle.dump(X, open( X_file, "wb" ) )
     pickle.dump(Y, open( Y_file, "wb" ) )

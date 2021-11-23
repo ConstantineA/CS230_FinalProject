@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-df = pd.read_csv("binaryBaseline.csv")
+csv_path = r"D:\CS 230\CS230_FinalProject\Final CSV Files and Data\final_binary.csv"
+df = pd.read_csv(csv_path)
 
 numpyArray = df.to_numpy()
 #print(numpyArray)
