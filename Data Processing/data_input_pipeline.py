@@ -5,21 +5,23 @@ import cv2
 import pickle
 
 
-image_path = r"D:\CS 230\CS230_FinalProject\ImageFiles"
+image_path = r"C:\Users\const\Desktop\allComplete_ForResNet"
 
 def main(file, output_file):
-    path = r"D:\CS 230\CS230_FinalProject\Final CSV Files and Data\Binary Split\\" + file
+    path = r"C:\Users\const\Desktop\multiSplits\\" + file
     df = pd.read_csv(path, header=0)
     X = []
     Y = []
     for _, row in df.iterrows():
         im = cv2.imread(image_path+"\\"+row["imageName"]+".jpg")
+        #print(im.shape)
         X.append(im)
         Y.append(row["labels"])
 
     X = np.array(X)
+    print(X.shape)
     Y = np.array(Y)
-    out_path = r"D:\CS 230\CS230_FinalProject\Final CSV Files and Data\Binary Split\\"
+    out_path = r"C:\Users\const\Desktop\multiSplits\\"
     X_file = out_path + output_file + "X.p"
     Y_file = out_path + output_file + "Y.p"
 
@@ -36,11 +38,11 @@ if __name__ == "__main__":
         arg2 = ""
         if sys.argv[1] == "TRAIN" or sys.argv[1] == "train":
             arg1 = "trainSet.csv"
-            arg2 = "train_"
+            arg2 = "trainRes_"
         if sys.argv[1] == "DEV" or sys.argv[1] == "dev":
             arg1 = "devSet.csv"
-            arg2 = "dev_"
+            arg2 = "devRes_"
         if sys.argv[1] == "TEST" or sys.argv[1] == "test":
             arg1 = "testSet.csv"
-            arg2 = "test_"
+            arg2 = "testRes_"
         main(arg1, arg2)
